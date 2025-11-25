@@ -10,11 +10,16 @@ let badEmail = document.getElementById("emailError")
 let badPw = document.getElementById("passwordError")
 let confirmPasswordError = document.getElementById("confirmPasswordError")
 
-localStorage.setItem('username', "Kamryn123")
-let user = localStorage.getItem("username")
-console.log(user)
-username.value = user
 
+function allowedEmail () {
+    let emailInput = emailField.value
+    
+    if (emailInput === "") {
+            badEmail.textContent = "Please Enter Email"
+return false  }  
+    badEmail.textContent = ""
+    return true
+}
 
 function allowedUser () {
     let usernameInput = username.value
@@ -26,20 +31,11 @@ function allowedUser () {
     return true
 }
 
-function allowedEmail () {
-    let emailInput = emailField.value
-    
-    if (emailInput === "") {
-            badEmail.textContent = "Enter Email"
-return false  }  
-    badEmail.textContent = ""
-    return true
-}
 
 function allowedPw () {
     let passwordInput = passwordField.value
     if (passwordInput === "") {
-    badPw.textContent = "Enter Password"
+    badPw.textContent = "Please Enter Password"
 return false  } 
     badPw.textContent = ""
     return true
@@ -54,31 +50,34 @@ function samePw () {
     }
 }
 
-
 function goPw() {
-    let password = passwordField.value;
-    let confirmPassword = confirmPw.value;
+    let password = passwordField.value
+    let confirmPassword = confirmPw.value
 
     if (confirmPassword === '') {
-    confirmPasswordError.textContent = "Confirm your password";
-        return false;
-} else if (password !== confirmPassword) {
-    confirmPasswordError.textContent = "Your passwords don't match";
-    return false;
-    } else {
-    confirmPasswordError.textContent = "";
-    return true;
-}}
+    confirmPasswordError.textContent = "Confirm password"
+        return false
 
+} else if (password !== confirmPassword) {
+    confirmPasswordError.textContent = "Your passwords don't match"
+    return false
+
+    } else {
+    confirmPasswordError.textContent = ""
+    return true
+}}
 
 
 form.addEventListener ("submit", (event) => {
     event.preventDefault ()
     if (allowedEmail() && allowedPw() && allowedUser() && goPw()) {
-    alert("Submitted")
+    alert("Form Submitted")
 }
 })
 
-
+localStorage.setItem('username', "Kamryn123")
+let user = localStorage.getItem("username")
+console.log(user)
+username.value = user
 
 
