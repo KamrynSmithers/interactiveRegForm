@@ -69,9 +69,9 @@ function goPw() {
 
 
 form.addEventListener ("submit", (event) => {
-    event.preventDefault ()
+   event.preventDefault ()
     if (allowedEmail() && allowedPw() && allowedUser() && goPw()) {
-    alert("Form Submitted")
+    alert("All Sections Complete")
 }
 })
 
